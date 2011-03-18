@@ -1,0 +1,9 @@
+a:link { text-decoration: none }
+a:hover { text-decoration: underline }
+a:link { color: #00e }
+html { font: 14px Nobile, sans-serif; background: #e8e8ee }
+html * { line-height: 1.5em }
+h2 { border-bottom: 1px solid #ccc }
+p { margin: 0 0 1.5em 0 }
+body { max-width: 640px; color: #333; background: #fff;
+   margin: 5em auto; padding: 3em 3em 1em 3em }

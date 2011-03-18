@@ -73,11 +73,16 @@ def tangle(directory):
             store(inclusion, 'included', True)
             append(inclusion, 'inbound', name)
 
+ignore = ['.git']
+
 def filenames(directory): 
    for root, dirs, files in os.walk(directory):
       for name in files: 
         path = os.path.join(root, name)
         yield os.path.normpath(path)
+      for omit in ignore: 
+         if omit in dirs: 
+            dirs.remove(omit)
 
 linkers = 'a area'
 includers = 'audio embed iframe img input link script source track video'

@@ -80,6 +80,7 @@ def filenames(directory):
       for name in files: 
         path = os.path.join(root, name)
         yield os.path.normpath(path)
+
       for omit in ignore: 
          if omit in dirs: 
             dirs.remove(omit)
@@ -216,14 +217,14 @@ url2 = r"url\(\s*'([^'\\]*(?:\\.[^'\\]*)*)'\s*\)"
 string1 = r'"[^"\\]*(?:\\.[^"\\]*)*"'
 string2 = r"'[^'\\]*(?:\\.[^'\\]*)*'"
 
-patterns = (comment, url, url1, url2, string1, string2)
+patterns = (comment, url1, url2, url, string1, string2)
 r_cssuri = re.compile('(?i)' + '|'.join(patterns))
 
 def css_links(base, css): 
    for a, b, c in r_cssuri.findall(css): 
       link = a or b or c
       if link and (not ':' in link): 
-         link = os.path.normpath(link.strip('\'"'))
+         link = os.path.normpath(link)
          yield urlparse.urljoin(base, link)
 
 def style(name): 
